@@ -56,6 +56,17 @@ class ViewController: UIViewController {
             conWidth.constant = 0.0
             self.view.layoutIfNeeded()
     }
+    
+    UIView.animate(
+        withDuration: 0.67,
+        delay: 2.0,
+        animations: {
+            conBottom.constant = imageView.frame.size.height
+            conWidth.constant = -50.0
+            self.view.layoutIfNeeded()
+    }) { _ in
+        imageView.removeFromSuperview()
+    }
   }
 
   func transitionCloseMenu() {
