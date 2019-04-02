@@ -8,7 +8,8 @@ class ViewController: UIViewController {
   @IBOutlet var buttonMenu: UIButton!
   @IBOutlet var titleLabel: UILabel!
     
-    @IBOutlet var menuHeightConstraint: NSLayoutConstraint!
+  @IBOutlet var menuHeightConstraint: NSLayoutConstraint!
+  @IBOutlet var menuButtonTrailing: NSLayoutConstraint!
   
   //MARK:- further class variables
   
@@ -23,12 +24,15 @@ class ViewController: UIViewController {
     
     titleLabel.text = menuIsOpen ? "Please select the item" : "Packing List"
     menuHeightConstraint.constant = menuIsOpen ? 200 : 80
+    menuButtonTrailing.constant = menuIsOpen ? 16 : 8
     
     UIView.animate(
         withDuration: 0.33,
         delay: 0.0,
         options: .curveEaseIn,
         animations: {
+            let angle: CGFloat = self.menuIsOpen ? .pi / 4 : 0.0
+            self.buttonMenu.transform = CGAffineTransform(rotationAngle: angle)
             self.view.layoutIfNeeded()
     },
         completion: nil)
