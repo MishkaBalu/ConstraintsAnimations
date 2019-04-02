@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         
 //        if constraint.identifier == "TitleCenterY" {
 //            constraint.isActive = false
-//            
+//
 //            let NewConstraint = NSLayoutConstraint(
 //                item: titleLabel,
 //                attribute: .centerY,
@@ -58,9 +58,11 @@ class ViewController: UIViewController {
     menuButtonTrailing.constant = menuIsOpen ? 16 : 8
     
     UIView.animate(
-        withDuration: 0.33,
+        withDuration: 0.75,
         delay: 0.0,
-        options: .curveEaseIn,
+        usingSpringWithDamping: 0.5,
+        initialSpringVelocity: 10,
+        options: [],
         animations: {
             let angle: CGFloat = self.menuIsOpen ? .pi / 4 : 0.0
             self.buttonMenu.transform = CGAffineTransform(rotationAngle: angle)
@@ -82,11 +84,18 @@ class ViewController: UIViewController {
     view.layoutIfNeeded()
     
     UIView.animate(
-        withDuration: 0.8) {
+        withDuration: 0.8,
+        delay: 0.0,
+        usingSpringWithDamping: 0.6,
+        initialSpringVelocity: 10,
+        options: [],
+        animations: {
             conBottom.constant = -imageView.frame.height * 2
             conWidth.constant = 0.0
             self.view.layoutIfNeeded()
-    }
+    },
+        completion: nil
+    )
     
     UIView.animate(
         withDuration: 0.67,
