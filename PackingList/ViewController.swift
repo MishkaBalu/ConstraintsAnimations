@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         delay: 0.0,
         usingSpringWithDamping: 0.4,
         initialSpringVelocity: 10,
-        options: [],
+        options: .allowUserInteraction,
         animations: {
             let angle: CGFloat = self.menuIsOpen ? .pi / 4 : 0.0
             self.buttonMenu.transform = CGAffineTransform(rotationAngle: angle)
@@ -121,6 +121,17 @@ class ViewController: UIViewController {
         delay(seconds: 0.35, completion: {
             self.toggleMenu(self)
         })
+        
+        let littleBar = slider.superview!
+        UIView.transition(
+            with: littleBar,
+            duration: 0.5,
+            options: .transitionFlipFromBottom,
+            animations: {
+                self.slider.isHidden = true
+            }) { _ in
+            self.slider.isHidden = false
+        }
     }
 }
 
