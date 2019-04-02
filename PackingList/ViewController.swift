@@ -10,6 +10,8 @@ class ViewController: UIViewController {
     
   @IBOutlet var menuHeightConstraint: NSLayoutConstraint!
   @IBOutlet var menuButtonTrailing: NSLayoutConstraint!
+  @IBOutlet var titleCenterY: NSLayoutConstraint!
+  @IBOutlet var titleCentery_Open: NSLayoutConstraint!
   
   //MARK:- further class variables
   
@@ -22,8 +24,12 @@ class ViewController: UIViewController {
   @IBAction func toggleMenu(_ sender: AnyObject) {
     menuIsOpen = !menuIsOpen
     
-    titleLabel.text = menuIsOpen ? "Please select the item" : "Packing List"
+    titleLabel.text = menuIsOpen ? "Select the item" : "Packing List"
     view.layoutIfNeeded()
+    
+    titleCenterY.isActive = !menuIsOpen
+    titleCentery_Open.isActive = !menuIsOpen
+    
     titleLabel.superview?.constraints.forEach { constraint in
         if constraint.firstItem === titleLabel &&
             constraint.firstAttribute == .centerX {
@@ -31,27 +37,22 @@ class ViewController: UIViewController {
             return
         }
         
-        if constraint.identifier == "TitleCenterY" {
-            constraint.isActive = false
-            
-            let NewConstraint = NSLayoutConstraint(
-                item: titleLabel,
-                attribute: .centerY,
-                relatedBy: .equal,
-                toItem: titleLabel.superview,
-                attribute: .centerY,
-                multiplier: menuIsOpen ? 0.67 : 1.00,
-                constant: 0.0)
-            NewConstraint.identifier = "TitleCenterY"
-            NewConstraint.priority = UILayoutPriority.defaultHigh
-            NewConstraint.isActive = true
-        }
+//        if constraint.identifier == "TitleCenterY" {
+//            constraint.isActive = false
+//            
+//            let NewConstraint = NSLayoutConstraint(
+//                item: titleLabel,
+//                attribute: .centerY,
+//                relatedBy: .equal,
+//                toItem: titleLabel.superview,
+//                attribute: .centerY,
+//                multiplier: menuIsOpen ? 0.67 : 1.00,
+//                constant: 0.0)
+//            NewConstraint.identifier = "TitleCenterY"
+//            NewConstraint.priority = UILayoutPriority.defaultHigh
+//            NewConstraint.isActive = true
+//        }
     }
-    
-    
-    
-    
-    
     
     menuHeightConstraint.constant = menuIsOpen ? 200 : 80
     menuButtonTrailing.constant = menuIsOpen ? 16 : 8

@@ -22,13 +22,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Packing List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVl-Vy-Hss">
-                                        <rect key="frame" x="132.66666666666666" y="44" width="110" height="25"/>
+                                        <rect key="frame" x="132.66666666666666" y="44" width="110" height="25.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOq-Pr-fqH">
-                                        <rect key="frame" x="337" y="34" width="30" height="45"/>
+                                        <rect key="frame" x="337" y="34.333333333333336" width="30" height="45.000000000000007"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="+"/>
                                         <connections>
@@ -43,7 +43,13 @@
                                     <constraint firstItem="OVl-Vy-Hss" firstAttribute="centerX" secondItem="7Lr-a6-pgK" secondAttribute="centerX" id="PlC-5c-Tdx"/>
                                     <constraint firstAttribute="height" constant="80" id="vCC-PK-uyy"/>
                                     <constraint firstAttribute="trailing" secondItem="IOq-Pr-fqH" secondAttribute="trailing" constant="8" id="yNV-0i-Atf"/>
+                                    <constraint firstItem="OVl-Vy-Hss" firstAttribute="centerY" secondItem="7Lr-a6-pgK" secondAttribute="centerY" multiplier="0.67" priority="745" constant="5" identifier="TitleCenterY_Open" id="yrJ-PR-uKs"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="yrJ-PR-uKs"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-ZN-xEy">
                                 <rect key="frame" x="0.0" y="80" width="375" height="698"/>
@@ -82,6 +88,8 @@
                         <outlet property="menuButtonTrailing" destination="yNV-0i-Atf" id="GIZ-ME-241"/>
                         <outlet property="menuHeightConstraint" destination="vCC-PK-uyy" id="H4H-gn-WU0"/>
                         <outlet property="tableView" destination="tdH-ZN-xEy" id="JzZ-jq-73Q"/>
+                        <outlet property="titleCenterY" destination="ML0-7M-cQe" id="2aU-0d-hx5"/>
+                        <outlet property="titleCentery_Open" destination="yrJ-PR-uKs" id="Epa-Zd-9yJ"/>
                         <outlet property="titleLabel" destination="OVl-Vy-Hss" id="KYJ-17-5qZ"/>
                     </connections>
                 </viewController>
