@@ -23,6 +23,36 @@ class ViewController: UIViewController {
     menuIsOpen = !menuIsOpen
     
     titleLabel.text = menuIsOpen ? "Please select the item" : "Packing List"
+    view.layoutIfNeeded()
+    titleLabel.superview?.constraints.forEach { constraint in
+        if constraint.firstItem === titleLabel &&
+            constraint.firstAttribute == .centerX {
+            constraint.constant = menuIsOpen ? -100.0 : 0.0
+            return
+        }
+        
+        if constraint.identifier == "TitleCenterY" {
+            constraint.isActive = false
+            
+            let NewConstraint = NSLayoutConstraint(
+                item: titleLabel,
+                attribute: .centerY,
+                relatedBy: .equal,
+                toItem: titleLabel.superview,
+                attribute: .centerY,
+                multiplier: menuIsOpen ? 0.67 : 1.00,
+                constant: 0.0)
+            NewConstraint.identifier = "TitleCenterY"
+            NewConstraint.priority = UILayoutPriority.defaultHigh
+            NewConstraint.isActive = true
+        }
+    }
+    
+    
+    
+    
+    
+    
     menuHeightConstraint.constant = menuIsOpen ? 200 : 80
     menuButtonTrailing.constant = menuIsOpen ? 16 : 8
     
